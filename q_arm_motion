@@ -1,0 +1,38 @@
+"""This program is dedicated to transfer the luggage from one place to another. More precisely, the linear
+actuator extends, then the Q-Arm takes the luggaes and tranfers to the platform, if it is accepted, or it
+transfers it to the bin, if the luggage is rejected. After each luggage, is being transfered, the table rotates
+in order to let the Q-Arm to take the next luggage. After all the luggages are transfered to their appropriate
+places, the linear actuator retracts and the program is finished."""
+
+import time
+
+# The linear actuator activates and extends at the beginning 
+bot.activate_linear_actuator() 
+time.sleep(2) 
+bot.linear_actuator_out(5) 
+
+
+# The Q-Arm starts and moves the luggage to its appropriate location 
+for i in range(4): 
+    name = scanner.barcode_check() 
+    arm.move_arm(0.0, -0.395, 0.244) 
+    arm.control_gripper(45) 
+    # The luggage is accepted and goes to the Platform A 
+    if name == "Platform": 
+        arm.move_arm(0.385, -0.14, 0.398) 
+        arm.control_gripper(-45) 
+    
+    # The luggage is rejected and goes to the bin 
+    else: 
+        arm.move_arm(0.0, 0.53, 0.232) 
+        arm.control_gripper(-45)
+        
+    # The Q-Arm goes back to its original position and the table rotates for the next luggage 
+    arm.home() 
+    table.rotate_table_angle(90) 
+    table.stop() 
+
+
+#At the end, the linear actuator retracts back to its original position 
+time.sleep(2) 
+bot.linear_actuator_in(5)
