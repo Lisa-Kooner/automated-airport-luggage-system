@@ -2,12 +2,11 @@
 
 - **Type:** *Python*
 - **Date:** *December 13th 2025*
-- **Name:** *Lisa-Koooner Singh*
 
 ---
 This program is dedicated to analyzing information related to flights, passengers, and baggage within an airport.
 It contains the functions passenger_data, fleet_data, daily_data, oversold, overweight, time_delay, layover, and
-graphical_Fri38. Passenger_data, fleet_data, daily_data returns 2D lists containing the passenger complete 
+graphical_interface. Passenger_data, fleet_data, daily_data returns 2D lists containing the passenger complete 
 information, the plane's information, and the gate and seat information respectively. Overweight returns the 
 passengers information attached to how much they over the max limit for baggage weight. Oversold returns the
 number of oversold economy seats as well as the number of oversold business seats, along with the name of the
